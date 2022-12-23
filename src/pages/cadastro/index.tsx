@@ -1,4 +1,5 @@
 import { MdEmail, MdLock } from 'react-icons/md';
+import { FaUser } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,15 +11,16 @@ import { Input } from '../../components/Input';
 
 import { api } from '../../services/api'
 
-import {Column, Container, CriarText, EsqueciText, Row, SubtitleLogin, Title, TitleLogin, Wrapper} from "./styles"
+import {Column, Container, CriarConta, Text, Row, SubtitleLogin, Title, TitleLogin, Wrapper} from "./styles"
 import { IFormData } from './types';
 
 const schema = yup.object({
     email: yup.string().email().required('Email não é válido'),
-    password: yup.string().min(3).required('No mínimo 3 caracteres'),
+    password: yup.string().required('No mínimo 3 caracteres'),
+    name: yup.string().min(3).required('Digite seu nome completo'),
   }).required();
 
-const Login = () => {
+const Cadastro = () => {
 
     const navigate = useNavigate();
 
@@ -55,15 +57,23 @@ const Login = () => {
         <Column>
             <Wrapper>
                 <TitleLogin>Faça seu cadastro</TitleLogin>
-                <SubtitleLogin>Faça seu login e make the change._</SubtitleLogin>
+                <SubtitleLogin>Cria sua conta e make the change._</SubtitleLogin>
                 <form onSubmit={handleSubmit(onSubmit)}>
+                    <Input name="name"  control={control} errorMessage = {errors?.name?.message}  placeholder = 'Nome completo' leftIcon={<FaUser />} />
+
                     <Input name="email"  control={control} errorMessage = {errors?.email?.message} placeholder = 'E-mail' leftIcon={<MdEmail/>}/>
+
                     <Input name="password" errorMessage={errors?.password?.message} control={control} placeholder = 'Senha' type = 'password' leftIcon={<MdLock/>}/>
-                    <Button title='Entrar' variant='secondary'  type = 'submit'/>
+                    <Button title='Criar minha conta' variant='secondary'  type = 'submit'/>
                 </form>
                 <Row>
-                    <EsqueciText> <a href="#">Esqueci minha senha</a></EsqueciText>
-                    <CriarText> <a href="/cadastro"> Criar conta</a></CriarText>
+                    <Text>
+                        <p>Já tenho conta.</p> 
+                    </Text>
+                        
+                    <CriarConta>
+                        <a href="/login">Fazer Login</a>
+                    </CriarConta>
                 </Row>
             </Wrapper>
         </Column>
@@ -72,4 +82,4 @@ const Login = () => {
     </>)
 }
 
-export {Login}
+export {Cadastro}

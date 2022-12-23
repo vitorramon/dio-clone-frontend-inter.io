@@ -33,4 +33,6 @@ export const ButtonContainer = styled.button <IButtonStyled>`
             border-radius: 22px;
         }
     `}
+
+    
 `

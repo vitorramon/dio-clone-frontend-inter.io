@@ -36,6 +36,7 @@ export const Title = styled.h2`
     width: 320px;
     margin-bottom: 20px;
     line-height: 44px;
+    text-align: left;
 
     color: #fff;
 `
@@ -59,7 +60,7 @@ export const SubtitleLogin = styled.p`
     line-height: 25px;
 `
 
-export const EsqueciText = styled.p`
+export const Text = styled.p`
     font-family: 'Open sans';
     font-style: normal;
     font-weight: 700;
@@ -73,7 +74,7 @@ export const EsqueciText = styled.p`
     }
 `
 
-export const CriarText = styled.p`
+export const CriarConta = styled.p`
     font-family: 'Open sans';
     font-style: normal;
     font-weight: 700;
@@ -83,7 +84,7 @@ export const CriarText = styled.p`
     
     a{
         text-decoration: none;
-        color: #e23dd7;
+        color: #23DD7A;
     }
 `
 
